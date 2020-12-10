@@ -42,7 +42,7 @@ public class AwsSqsSteps {
     public void before(Scenario scenario) {
     }
 
-    @Given("Initialize (?:SQS|sqs) client")
+    @Given("^initialize (?:SQS|sqs) client$")
     public void initializeSqsClient() {
 
         sqsClient = SqsClient.builder().region(Region.of((String) context.getVariables().get(AWS_SQS_REGION)))
@@ -55,7 +55,7 @@ public class AwsSqsSteps {
             String.format("arn:aws:sqs:%s:%s:", context.getVariables().get(AWS_SQS_REGION), context.getVariables().get(AWS_SQS_ACCOUNT_ID));
     }
 
-    @Given("Send message: {string} to (?:SQS|sqs) queue: {string}")
+    @Given("^send message: ([a-z0-9-]+) to (?:SQS|sqs) queue: ([a-z0-9-]+)$")
     public void sendSqsMessage(String message, String queueName) {
 
         sqsClient.sendMessage(SendMessageRequest.builder()
@@ -65,7 +65,7 @@ public class AwsSqsSteps {
             .build());
     }
 
-    @Then("verify that the message from (?:SQS|sqs) queue {string} has content {string}")
+    @Then("^verify that the message from (?:SQS|sqs) queue ([a-z0-9-]+) has content ([a-z0-9-]+)$")
     public void verifyMessageContent(String queue, String content) {
         assertThat(getMessages(queue).get(0).body(), equalTo(content));
     }
