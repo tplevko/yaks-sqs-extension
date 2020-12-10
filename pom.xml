@@ -24,7 +24,7 @@
     <maven-remote-resources-plugin.version>1.5</maven-remote-resources-plugin.version>
 
     <citrus.version>3.0.0-M1</citrus.version>
-    <cucumber.version>5.4.2</cucumber.version>
+    <cucumber.version>5.7.0</cucumber.version>
     <log4j2.version>2.13.1</log4j2.version>
     <aws-sqs.version>2.15.34</aws-sqs.version>
   </properties>
